@@ -1,0 +1,90 @@
+{
+  "action": {
+    "genreConventions": [
+      "Fast-paced combat loops",
+      "Clear feedback for hits and dodges",
+      "Combo chaining and momentum-based movement"
+    ],
+    "recommendedMechanics": [
+      "Combo meter",
+      "Reactive enemy AI",
+      "Dash and parry systems"
+    ],
+    "referenceGames": [
+      "Devil May Cry",
+      "Bayonetta",
+      "Hades"
+    ],
+    "recommendedProgressionSystems": [
+      "Skill unlocks through experience",
+      "Weapon upgrades with distinct feel",
+      "Stamina and cooldown management"
+    ]
+  },
+  "rpg": {
+    "genreConventions": [
+      "Character progression through leveling",
+      "Narrative-driven quests",
+      "Stat-driven builds and equipment"
+    ],
+    "recommendedMechanics": [
+      "Branching dialogue",
+      "Party synergy systems",
+      "Crafting and gear customization"
+    ],
+    "referenceGames": [
+      "The Witcher 3",
+      "Final Fantasy VII",
+      "Divinity: Original Sin 2"
+    ],
+    "recommendedProgressionSystems": [
+      "Experience and skill trees",
+      "Reputation-based unlocks",
+      "Weapon and magic affinity growth"
+    ]
+  },
+  "strategy": {
+    "genreConventions": [
+      "Meaningful resource management",
+      "Multiple viable paths to victory",
+      "Clear decision-making tension"
+    ],
+    "recommendedMechanics": [
+      "Terrain and positioning advantages",
+      "Unit specialization",
+      "Fog of war or hidden information"
+    ],
+    "referenceGames": [
+      "StarCraft II",
+      "Civilization VI",
+      "XCOM 2"
+    ],
+    "recommendedProgressionSystems": [
+      "Tech trees and faction upgrades",
+      "Base expansion milestones",
+      "Unlockable commander abilities"
+    ]
+  },
+  "adventure": {
+    "genreConventions": [
+      "Exploration-focused pacing",
+      "Environmental storytelling",
+      "Puzzle and discovery-driven flow"
+    ],
+    "recommendedMechanics": [
+      "Contextual item use",
+      "Ambient challenge design",
+      "Narrative-based branching paths"
+    ],
+    "referenceGames": [
+      "The Legend of Zelda: Breath of the Wild",
+      "Uncharted 4",
+      "Tomb Raider"
+    ],
+    "recommendedProgressionSystems": [
+      "Story beats tied to progression",
+      "Tool-based unlocking of new areas",
+      "Collectible-driven rewards"
+    ]
+  }
+}

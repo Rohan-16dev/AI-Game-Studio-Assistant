@@ -1,0 +1,242 @@
+{
+  "Platformer": {
+    "genreConventions": [
+      "Precision jumping and movement",
+      "Layered level design with hidden paths",
+      "Momentum-based traversal",
+      "Collectibles and exploration rewards",
+      "Increasing difficulty through platform variety"
+    ],
+    "recommendedMechanics": [
+      "Double jump and air control",
+      "Wall jump / wall climb",
+      "Dash or sprint ability",
+      "Environmental hazards and moving platforms",
+      "Power-ups with temporary effects"
+    ],
+    "progressionSystems": [
+      "Unlockable movement abilities",
+      "Area-based exploration unlocking new regions",
+      "Collectible-driven upgrades",
+      "Skill-based challenge rooms with rewards",
+      "Difficulty gating via precision sections"
+    ],
+    "referenceGames": [
+      "Celeste",
+      "Hollow Knight",
+      "Ori and the Blind Forest",
+      "Super Mario Odyssey",
+      "Rayman Legends"
+    ]
+  },
+  "RPG": {
+    "genreConventions": [
+      "Character growth through stats and abilities",
+      "Story-driven quests and narrative choices",
+      "Inventory management and loot progression",
+      "NPC relationships and world exploration",
+      "Combat systems tied to character builds"
+    ],
+    "recommendedMechanics": [
+      "Dialogue choices with branching outcomes",
+      "Turn-based or action-oriented combat",
+      "Skill trees and ability customization",
+      "Crafting and gear enhancement",
+      "Reputation and faction systems"
+    ],
+    "progressionSystems": [
+      "Experience and leveling",
+      "Gear and equipment upgrades",
+      "Quest reward chains",
+      "Companion growth and loyalty mechanics",
+      "Talent or class specialization paths"
+    ],
+    "referenceGames": [
+      "The Witcher 3: Wild Hunt",
+      "Divinity: Original Sin 2",
+      "Persona 5",
+      "Final Fantasy VII",
+      "Dragon Age: Origins"
+    ]
+  },
+  "Roguelike": {
+    "genreConventions": [
+      "Procedurally generated levels",
+      "Permadeath with meta-progression",
+      "High difficulty and replayability",
+      "Randomized item and enemy placement",
+      "Short, tense runs with escalating risk"
+    ],
+    "recommendedMechanics": [
+      "Dynamic item synergies",
+      "Unlockable characters or modifiers",
+      "Risk / reward resource systems",
+      "Random events and room variety",
+      "Adaptive enemy difficulty"
+    ],
+    "progressionSystems": [
+      "Persistent upgrades between runs",
+      "Unlockable abilities or perks",
+      "Unlockable story fragments or lore",
+      "Permanent currency for permanent boosts",
+      "Run-specific modifiers and difficulty options"
+    ],
+    "referenceGames": [
+      "Hades",
+      "Dead Cells",
+      "Rogue Legacy",
+      "The Binding of Isaac",
+      "Enter the Gungeon"
+    ]
+  },
+  "Horror": {
+    "genreConventions": [
+      "Tension and atmosphere over action",
+      "Limited resources and vulnerability",
+      "Psychological or supernatural themes",
+      "Environmental storytelling and dread",
+      "Slow build to terrifying encounters"
+    ],
+    "recommendedMechanics": [
+      "Stealth and avoidance",
+      "Inventory rationing",
+      "Sanity or fear meters",
+      "Audio and visual cues for danger",
+      "Puzzle-based progression"
+    ],
+    "progressionSystems": [
+      "Story reveals through exploration",
+      "Resource management upgrades",
+      "Escape route discovery",
+      "Character sanity or stability changes",
+      "Environmental access gating"
+    ],
+    "referenceGames": [
+      "Resident Evil 2",
+      "Amnesia: The Dark Descent",
+      "Silent Hill 2",
+      "Alien: Isolation",
+      "Outlast"
+    ]
+  },
+  "Survival": {
+    "genreConventions": [
+      "Resource gathering and crafting",
+      "Open-world exploration",
+      "Threat escalation through hunger, weather, or enemies",
+      "Base building and shelter mechanics",
+      "Long-term planning and risk management"
+    ],
+    "recommendedMechanics": [
+      "Day / night cycle with threats",
+      "Food, water, and stamina systems",
+      "Crafting and tool progression",
+      "Environmental hazards and weather",
+      "Base or camp construction"
+    ],
+    "progressionSystems": [
+      "Crafting recipe unlocks",
+      "Shelter and gear upgrades",
+      "Survival skill trees",
+      "Exploration unlocking safer zones",
+      "Steady escalation of threats"
+    ],
+    "referenceGames": [
+      "Don’t Starve",
+      "Subnautica",
+      "The Long Dark",
+      "ARK: Survival Evolved",
+      "Green Hell"
+    ]
+  },
+  "Strategy": {
+    "genreConventions": [
+      "Resource management and planning",
+      "Tactical decision-making",
+      "Multiple viable strategies",
+      "Clear win and loss conditions",
+      "Balancing offense, defense, and economy"
+    ],
+    "recommendedMechanics": [
+      "Unit or asset management",
+      "Tech trees and research",
+      "Base or territory control",
+      "Fog of war and reconnaissance",
+      "Economic and production systems"
+    ],
+    "progressionSystems": [
+      "Tech or upgrade trees",
+      "Territory expansion and capture",
+      "Resource income scaling",
+      "Scenario-based objectives",
+      "Victory condition evolution"
+    ],
+    "referenceGames": [
+      "StarCraft II",
+      "Civilization VI",
+      "XCOM 2",
+      "Total War: Three Kingdoms",
+      "Age of Empires II"
+    ]
+  },
+  "Puzzle": {
+    "genreConventions": [
+      "Clear rules and constraints",
+      "Cognitive challenge over reflexes",
+      "Pattern recognition and logic",
+      "Gradual difficulty increase",
+      "Satisfying solutions and feedback"
+    ],
+    "recommendedMechanics": [
+      "Spatial reasoning challenges",
+      "Switches, lasers, and portals",
+      "Modular puzzle components",
+      "Limited moves or time mechanics",
+      "Emergent puzzle combinations"
+    ],
+    "progressionSystems": [
+      "Puzzle difficulty scaling",
+      "New mechanics introduced gradually",
+      "Optional challenge rooms",
+      "Hint or assist systems",
+      "Unlockable puzzle packs"
+    ],
+    "referenceGames": [
+      "Portal 2",
+      "The Witness",
+      "Tetris Effect",
+      "Baba Is You",
+      "Monument Valley"
+    ]
+  },
+  "Adventure": {
+    "genreConventions": [
+      "Exploration and discovery",
+      "Narrative-driven progression",
+      "Character and world interaction",
+      "Puzzles woven into environments",
+      "A sense of wonder and journey"
+    ],
+    "recommendedMechanics": [
+      "Dialogue and choice systems",
+      "Environmental puzzle solving",
+      "Collectible discovery",
+      "Companion or party dynamics",
+      "Interactive storytelling moments"
+    ],
+    "progressionSystems": [
+      "Story chapter progression",
+      "Open area unlocks through exploration",
+      "Item-based advancement",
+      "Character relationship growth",
+      "Narrative-driven objective chains"
+    ],
+    "referenceGames": [
+      "The Legend of Zelda: Breath of the Wild",
+      "Uncharted 4",
+      "Life is Strange",
+      "Gris",
+      "The Last of Us"
+    ]
+  }
+}

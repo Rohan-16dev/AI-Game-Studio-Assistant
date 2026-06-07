@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Architecture
+
+User Input
+    ↓
+Foundry IQ Layer
+    ↓
+Knowledge Retrieval
+    ↓
+Prompt Enrichment
+    ↓
+Gemini
+    ↓
+Game Design Document
+
 ## Getting Started
 
 First, run the development server:
@@ -34,3 +48,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## AI Assisted Development
+
+GitHub Copilot was used as an AI-assisted development partner during this project to help generate code snippets, suggest refactors, and support TypeScript fixes and UI improvements. The developer retained full control over architecture, feature selection, testing, and final integration.
+
+- Copilot helped generate React and Next.js code for UI components, API routes, and helper utilities.
+- It assisted with refactoring by suggesting clearer component structure, reusable hooks, and better state handling.
+- Copilot contributed TypeScript guidance for request validation, AI response parsing, and typed component props.
+- It helped implement PDF export support and refine the `Generate Cover Art` flow with loading and error states.
+- Copilot provided debugging and cleanup suggestions while the developer verified the final behavior.
+
+> All architectural decisions, feature selection, testing, and final integration were performed by the developer.
