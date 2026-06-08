@@ -23,17 +23,88 @@ function isValidGameIdea(data: unknown): data is GameIdea {
   );
 }
 
+function stripMarkdownCodeFences(text: string): string {
+  let cleaned = text.trim();
+
+  cleaned = cleaned.replace(/(^|\n)```(?:json)?\n([\s\S]*?)\n```/gi, "$1$2");
+  cleaned = cleaned.replace(/(^|\n)~~~(?:json)?\n([\s\S]*?)\n~~~/gi, "$1$2");
+  cleaned = cleaned.replace(/(^|\n)`([^`\n]+)`(\n|$)/g, "$1$2$3");
+
+  return cleaned.trim();
+}
+
+function extractFirstJsonObject(text: string): string | null {
+  const start = text.indexOf("{");
+  if (start === -1) {
+    return null;
+  }
+
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+
+  for (let i = start; i < text.length; i++) {
+    const char = text[i];
+
+    if (escape) {
+      escape = false;
+      continue;
+    }
+
+    if (char === "\\") {
+      escape = true;
+      continue;
+    }
+
+    if (char === '"') {
+      inString = !inString;
+      continue;
+    }
+
+    if (inString) {
+      continue;
+    }
+
+    if (char === "{") {
+      depth += 1;
+    } else if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start, i + 1);
+      }
+    }
+  }
+
+  return null;
+}
+
 function parseGameIdea(responseText: string): GameIdea {
+  const cleanedResponse = stripMarkdownCodeFences(responseText);
+  const jsonCandidate = extractFirstJsonObject(cleanedResponse) ?? cleanedResponse;
   let parsed: unknown;
 
   try {
-    parsed = JSON.parse(responseText);
+    parsed = JSON.parse(jsonCandidate);
   } catch (error) {
-    throw new Error(`AI response is not valid JSON: ${(error as Error).message}`);
+    console.error("Failed to parse AI response as JSON.", {
+      rawResponse: responseText,
+      cleanedResponse,
+      jsonCandidate,
+      error: (error as Error).message,
+    });
+    throw new Error(
+      "The AI service returned an invalid response format. Please try again or refine your prompt."
+    );
   }
 
   if (!isValidGameIdea(parsed)) {
-    throw new Error("AI response does not match the required GameIdea shape.");
+    console.error("AI response does not match expected GameIdea shape.", {
+      rawResponse: responseText,
+      cleanedResponse,
+      jsonCandidate,
+      parsed,
+    });
+    throw new Error("The AI returned malformed game idea data. Please try again.");
   }
 
   return parsed;
@@ -72,13 +143,25 @@ export async function sendPromptToAI(prompt: string): Promise<GameIdea> {
   const client = new GoogleGenerativeAI(apiKey);
   const model = client.getGenerativeModel({
     model: "gemini-3.1-flash-lite",
-    generationConfig: { maxOutputTokens: 600 },
+    generationConfig: {
+      maxOutputTokens: 3000,
+      temperature: 0,
+      responseMimeType: "application/json",
+    },
   });
 
-  const result = await model.generateContent(prompt);
+  const result = await model.generateContent({
+    contents: [
+      {
+        role: "user",
+        parts: [{ text: prompt }],
+      },
+    ],
+  });
   const generatedText = extractTextFromResponse(result);
 
   if (!generatedText.trim()) {
+    console.error("AI service returned an empty response.", { result });
     throw new Error("AI service returned an empty response.");
   }
 

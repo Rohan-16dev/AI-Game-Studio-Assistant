@@ -1,7 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 AI Game Studio Assistant
 
-## Architecture
+An AI-powered game design assistant built for Agents League Hackathon.
 
+The application helps aspiring game developers rapidly generate complete game concepts, design documents, gameplay systems, character ideas, level concepts, and cover art from a simple prompt.
+
+It combines AI generation, a Foundry IQ-inspired knowledge retrieval layer, image generation, and PDF export capabilities into a single workflow.
+
+---
+
+## 🚀 Live Demo
+
+Coming Soon
+
+**Deployment:** [Add Vercel URL Here]
+
+---
+
+# 🎥 Demo Video
+
+![Demo](gif link)
+
+[Watch Demo Video](YOUR_VIDEO_LINK)
+
+The demo showcases:
+
+- Game concept generation
+- Foundry IQ knowledge retrieval
+- Prompt enrichment workflow
+- AI-generated cover art
+- PDF export functionality
+
+---
+
+## 📌 Problem Statement
+
+Indie developers and students often struggle during the early stages of game development:
+
+- Generating unique game concepts
+- Designing gameplay systems
+- Creating coherent worlds and characters
+- Maintaining genre consistency
+- Producing professional documentation
+
+This project accelerates ideation by generating structured Game Design Documents (GDDs) enriched with genre-specific knowledge.
+
+---
+
+# ✨ Features
+
+### 🎯 Game Concept Generation
+
+Generate:
+
+- Game Title
+- Story
+- Main Character
+- Core Mechanics
+- Enemy Types
+- Boss Fight Concepts
+- Level Ideas
+
+---
+
+### 🧠 Foundry IQ Inspired Knowledge Layer
+
+Before generation, the system retrieves genre-specific design knowledge such as:
+
+- Genre conventions
+- Recommended mechanics
+- Progression systems
+- Reference games
+
+This information is injected into the prompt to improve output quality and reduce generic responses.
+
+---
+
+### 🎨 AI Cover Art Generation
+
+Generate concept cover art for the generated game idea.
+
+Features:
+
+- AI-powered image generation
+- Integrated directly into workflow
+- Visual concept support for game pitches
+
+---
+
+### 📄 PDF Export
+
+Export generated game concepts into a downloadable Game Design Document.
+
+---
+
+### 🔍 Design Analysis
+
+Analyze generated ideas and improve overall game design quality.
+
+---
+
+# 🏗 Architecture
+
+```text
 User Input
     ↓
 Foundry IQ Layer
@@ -10,53 +110,248 @@ Knowledge Retrieval
     ↓
 Prompt Enrichment
     ↓
-Gemini
+Gemini AI
     ↓
 Game Design Document
+    ↓
+Cover Art Generation
+    ↓
+PDF Export
+```
 
-## Getting Started
+---
 
-First, run the development server:
+# 🧠 Microsoft Foundry IQ Integration
+
+This project implements a Foundry IQ-inspired Retrieval-Augmented Generation workflow.
+
+### Knowledge Base
+
+The application contains a structured genre knowledge repository:
+
+- Genre conventions
+- Recommended mechanics
+- Progression systems
+- Reference games
+
+### Retrieval Layer
+
+When the user submits a genre:
+
+1. Relevant genre knowledge is retrieved
+2. Context is injected into the prompt
+3. AI generation is grounded using design knowledge
+4. More relevant and consistent game concepts are produced
+
+### Benefits
+
+✅ Better genre consistency
+
+✅ Reduced hallucinations
+
+✅ Higher quality design outputs
+
+✅ More actionable game concepts
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### AI
+
+- Gemini API
+- Prompt Engineering
+- Retrieval-Augmented Generation
+
+### Additional Features
+
+- PDF Export
+- Image Generation
+- Foundry IQ Knowledge Layer
+
+---
+
+# 📂 Project Structure
+
+```text
+app/
+│
+├── api/
+│   ├── generate/
+│   └── generate-image/
+│
+components/
+│
+├── GameForm.tsx
+├── GameOutput.tsx
+├── FoundryIQPanel.tsx
+├── RecentDesignsPanel.tsx
+└── FullScreenLoading.tsx
+│
+lib/
+│
+├── aiService.ts
+├── foundryIQ.ts
+├── promptBuilder.ts
+├── pdfExport.ts
+└── designAnalyzer.ts
+│
+data/
+│
+├── gameKnowledge.json
+├── foundryKnowledge.json
+│
+docs/
+│
+└── Copilot development screenshots
+```
+
+---
+
+# 🤖 GitHub Copilot Development Journey
+
+GitHub Copilot was used extensively throughout development in both Chat and Agent modes.
+
+Copilot assisted with:
+
+- Architecture planning
+- Project scaffolding
+- TypeScript modeling
+- Foundry IQ integration
+- Image generation implementation
+- Debugging and refinement
+- UI improvements
+
+All architectural decisions, feature selection, testing, validation, and final integration were performed by the developer.
+
+---
+
+## 1. Architecture Planning
+
+![Architecture](docs/copilot-architecture.png)
+
+Copilot helped plan the initial AI Game Studio Assistant structure and workflow.
+
+---
+
+## 2. Project Scaffolding
+
+![Scaffolding](docs/copilot-structure.png)
+
+Copilot assisted in creating reusable components and organizing project structure.
+
+---
+
+## 3. TypeScript Modeling
+
+![TypeScript](docs/copilot-typescript.png)
+
+Copilot helped define strongly typed interfaces and shared models.
+
+---
+
+## 4. Foundry IQ Integration
+
+![Foundry IQ](docs/copilot-foundryiq.png)
+
+Copilot assisted in implementing the knowledge retrieval layer and typed knowledge structures.
+
+---
+
+## 5. Image Generation Feature
+
+![Image Generation](docs/copilot-image-generation.png)
+
+Copilot supported image generation integration and API workflow implementation.
+
+---
+
+## 6. Code Validation & Refinement
+
+![Validation](docs/copilot-debugging.png)
+
+Copilot provided debugging assistance, TypeScript fixes, and implementation suggestions.
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Rohan-16dev/AI-Game-Studio-Assistant.git
+```
+
+Move into the project directory:
+
+```bash
+cd game-studio-assistant
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create environment variables:
+
+```env
+GEMINI_API_KEY=your_api_key
+```
+
+Run locally:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📸 Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Main Interface
 
-## Learn More
+[](docs/main-interface.png)
 
-To learn more about Next.js, take a look at the following resources:
+## Generated Game Design Document
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[](docs/game-design.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Cover Art Generation
 
-## Deploy on Vercel
+[](docs/cover-art.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## PDF Export
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[](docs/pdf-export.png)
 
-## AI Assisted Development
+---
 
-GitHub Copilot was used as an AI-assisted development partner during this project to help generate code snippets, suggest refactors, and support TypeScript fixes and UI improvements. The developer retained full control over architecture, feature selection, testing, and final integration.
+# 🎯 Future Improvements
 
-- Copilot helped generate React and Next.js code for UI components, API routes, and helper utilities.
-- It assisted with refactoring by suggesting clearer component structure, reusable hooks, and better state handling.
-- Copilot contributed TypeScript guidance for request validation, AI response parsing, and typed component props.
-- It helped implement PDF export support and refine the `Generate Cover Art` flow with loading and error states.
-- Copilot provided debugging and cleanup suggestions while the developer verified the final behavior.
+- Multiple AI model support
+- Multiplayer game design generation
+- Advanced game balancing suggestions
+- Character art generation
+- World-building assistant
+- Team collaboration features
 
-> All architectural decisions, feature selection, testing, and final integration were performed by the developer.
+---
+
+# 👨‍💻 Developer
+
+Built by Rohan for Agents League Hackathon.
+
+---
+
+# 📜 License
+
+This project is provided for hackathon evaluation and educational purposes.

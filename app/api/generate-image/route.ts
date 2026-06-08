@@ -1,20 +1,18 @@
 import { NextResponse } from "next/server";
+import { InferenceClient } from "@huggingface/inference";
 
 type GenerateImageRequestBody = {
   coverPrompt: string;
 };
 
 type ImageGenerationResponse = {
-  imageData: string;
-  mimeType: string;
+  imageData?: string;
+  mimeType?: string;
+  imageUrl?: string;
 };
 
-const imageEndpoints = [
-  "https://generativeai.googleapis.com/v1/images:generate",
-  "https://generativemodels.googleapis.com/v1/images:generate",
-];
-
-const imageModels = ["models/image-bison-001", "image-bison-001"];
+const HUGGING_FACE_MODEL = "stabilityai/stable-diffusion-xl-base-1.0";
+const HUGGING_FACE_URL = `https://api-inference.huggingface.co/models/${HUGGING_FACE_MODEL}`;
 
 function isValidRequestBody(data: unknown): data is GenerateImageRequestBody {
   if (typeof data !== "object" || data === null) {
@@ -27,73 +25,75 @@ function isValidRequestBody(data: unknown): data is GenerateImageRequestBody {
   return typeof coverPrompt === "string" && coverPrompt.trim().length > 0;
 }
 
-function parseImageResponse(json: unknown): string | null {
-  if (typeof json !== "object" || json === null) {
-    return null;
-  }
-
-  const response = json as Record<string, unknown>;
-  const data = response.data;
-
-  if (!Array.isArray(data) || data.length === 0) {
-    return null;
-  }
-
-  const firstItem = data[0] as Record<string, unknown>;
-  return (
-    typeof firstItem.b64Json === "string" ? firstItem.b64Json :
-    typeof firstItem.b64_json === "string" ? firstItem.b64_json :
-    typeof firstItem.b64json === "string" ? firstItem.b64json :
-    null
-  );
-}
-
 async function generateCoverArt(prompt: string): Promise<ImageGenerationResponse> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.HUGGINGFACE_API_KEY;
+  const hasApiKey = Boolean(apiKey);
   if (!apiKey) {
-    throw new Error("AI service is not configured. Set GEMINI_API_KEY.");
+    console.error("Hugging Face image generation failed: missing API key.", {
+      model: HUGGING_FACE_MODEL,
+      endpoint: HUGGING_FACE_URL,
+      hasApiKey,
+    });
+    throw new Error("AI service is not configured. Set HUGGINGFACE_API_KEY.");
   }
 
-  for (const endpoint of imageEndpoints) {
-    for (const model of imageModels) {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          prompt,
-          size: "1024x1024",
-          responseFormat: "b64_json",
-        }),
+  console.info("Hugging Face image generation request", {
+    model: HUGGING_FACE_MODEL,
+    endpoint: HUGGING_FACE_URL,
+    hasApiKey,
+    prompt,
+  });
+
+  const client = new InferenceClient(apiKey);
+
+  try {
+    const blob = await client.textToImage(
+      {
+        model: HUGGING_FACE_MODEL,
+        inputs: prompt,
+      },
+      { outputType: "blob" },
+    );
+
+    const contentType = blob.type || "image/png";
+    const buffer = Buffer.from(await blob.arrayBuffer());
+    const base64 = buffer.toString("base64");
+
+    console.info("Hugging Face image generation success", {
+      model: HUGGING_FACE_MODEL,
+      endpoint: HUGGING_FACE_URL,
+      contentType,
+      prompt,
+    });
+
+    return {
+      imageData: base64,
+      mimeType: contentType,
+    };
+  } catch (error) {
+    const err: any = error;
+    console.error("Hugging Face image generation failed", {
+      model: HUGGING_FACE_MODEL,
+      endpoint: HUGGING_FACE_URL,
+      prompt,
+      error: err?.message ?? String(err),
+    });
+
+    try {
+      console.error("Hugging Face image generation error details", {
+        name: err?.name,
+        message: err?.message,
+        cause: err?.cause,
+        serialized: JSON.stringify(err, Object.getOwnPropertyNames(err)),
       });
-
-      const json = await response.json().catch(() => null);
-      const imageData = parseImageResponse(json);
-
-      if (response.ok && imageData) {
-        return {
-          imageData,
-          mimeType: "image/png",
-        };
-      }
-
-      const errorDetails = typeof json === "object" && json !== null ? json : { message: "Unknown image generation failure." };
-      const message = response.ok
-        ? "Image generation did not return valid data."
-        : `Image generation failed (${response.status}): ${(errorDetails as Record<string, unknown>).error ?? (errorDetails as Record<string, unknown>).message ?? response.statusText}`;
-
-      if (response.status === 404 || response.status === 400) {
-        continue;
-      }
-
-      throw new Error(typeof message === "string" ? message : "Image generation failed.");
+    } catch (stringifyError) {
+      console.error("Failed to serialize Hugging Face error", { error: (stringifyError as Error).message });
     }
-  }
 
-  throw new Error("Unable to generate cover art with the configured Gemini image endpoint.");
+    throw new Error(
+      `Hugging Face image generation failed: ${err?.message ?? "Unknown error from Hugging Face."}`,
+    );
+  }
 }
 
 export async function POST(request: Request) {

@@ -40,7 +40,9 @@ export default function GameOutput({ idea }: GameOutputProps) {
         throw new Error(data?.error || "Failed to generate cover art.");
       }
 
-      const imageSrc = `data:${data.mimeType};base64,${data.imageData}`;
+      const imageSrc = data.imageUrl
+        ? data.imageUrl
+        : `data:${data.mimeType};base64,${data.imageData}`;
       setCoverImageSrc(imageSrc);
     } catch (err) {
       setImageError((err as Error).message || "Unable to generate cover art.");
