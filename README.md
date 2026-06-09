@@ -10,17 +10,15 @@ It combines AI generation, a Foundry IQ-inspired knowledge retrieval layer, imag
 
 ## 🚀 Live Demo
 
-Coming Soon
-
-**Deployment:** [Add Vercel URL Here]
+**Deployment:** [https://ai-game-studio-assistant.vercel.app]
 
 ---
 
 # 🎥 Demo Video
 
-![Demo](gif link)
+![Demo](docs/demo.gif)
 
-[Watch Demo Video](YOUR_VIDEO_LINK)
+[Watch Demo Video](https://youtu.be/Qnt04kTTs5M?si=pY8QXkvqvBaz5d5I)
 
 The demo showcases:
 
@@ -319,19 +317,19 @@ npm run dev
 
 ## Main Interface
 
-[](docs/main-interface.png)
+![Interface](docs/main-interface.png)
 
 ## Generated Game Design Document
 
-[](docs/game-design.png)
+![Game Idea](docs/game-design.png)
 
 ## Cover Art Generation
 
-[](docs/cover-art.png)
+![Cover Photo](docs/cover-art.png)
 
 ## PDF Export
 
-[](docs/pdf-export.png)
+![PDF](docs/pdf-export.png)
 
 ---
 
