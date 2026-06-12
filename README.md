@@ -18,7 +18,7 @@ It combines AI generation, a Foundry IQ-inspired knowledge retrieval layer, imag
 
 ![Demo](docs/demo.gif)
 
-[Watch Demo Video](https://youtu.be/Qnt04kTTs5M?si=pY8QXkvqvBaz5d5I)
+[Watch Demo Video On Youtube](https://youtu.be/mLtJ2zonIXA?si=M9QP4a6D3apVkUiz)
 
 The demo showcases:
 
@@ -102,19 +102,20 @@ Analyze generated ideas and improve overall game design quality.
 ```text
 User Input
     ↓
+Next.js Frontend
+    ↓
 Foundry IQ Layer
     ↓
-Knowledge Retrieval
+Knowledge Retrieval (Local JSON Knowledge Base)
     ↓
 Prompt Enrichment
     ↓
 Gemini AI
     ↓
 Game Design Document
-    ↓
-Cover Art Generation
-    ↓
-PDF Export
+    ├─ Cover Art Generation (Hugging Face)
+    ├─ Design Analysis
+    └─ PDF Export
 ```
 
 ---
