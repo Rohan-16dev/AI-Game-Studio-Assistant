@@ -44,6 +44,12 @@ This project accelerates ideation by generating structured Game Design Documents
 
 ---
 
+## Architecture Diagram
+
+![Architecture](docs/architecture-diagram.png)
+
+---
+
 # ✨ Features
 
 ### 🎯 Game Concept Generation
